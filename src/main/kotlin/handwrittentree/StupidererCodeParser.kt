@@ -364,7 +364,7 @@ class StupidererCodeParser {
 }
 
 fun main() {
-    val node = StupidererCodeParser().parse(File("src/main/kotlin/madlibs.stpdrr").readText())
+    val node = StupidererCodeParser().parse(File("madlibs.stpdrr").readText())
 
     node.print()
     println("========Compiled:========")
