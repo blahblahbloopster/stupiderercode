@@ -3,6 +3,7 @@ package com.github.blahblahbloopster
 import com.github.blahblahbloopster.ConstantNode.Type.*
 import com.github.blahblahbloopster.StupidererCodeInterpreter.Union
 import java.io.File
+import java.net.URL
 import kotlin.system.exitProcess
 
 class StupidererCodeParser {
@@ -366,7 +367,9 @@ class StupidererCodeParser {
 
 fun main() {
     val parser = StupidererCodeParser()
-    val node = parser.parse(parser::class.java.getResourceAsStream("/madlibs.stpdrr")!!.readAllBytes().decodeToString())
+    val url = URL("https://raw.githubusercontent.com/blahblahbloopster/stupiderercode/master/src/main/resources/madlibs.stpdrr")
+    val stream = url.openStream()
+    val node = parser.parse(stream.readAllBytes().decodeToString())
 
 //    println(ClassLoader.getSystemClassLoader().getResourceAsStream("madlibs.txt"))
 //    exitProcess(0)

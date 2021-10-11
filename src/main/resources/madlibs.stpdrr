@@ -14,9 +14,10 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.util.stream.Collectors;
 import java.lang.ClassLoader;
+import java.net.URL;
 
-var stream = ClassLoader.getSystemClassLoader().getResourceAsStream("madlibs.txt");
-System.out.println(stream);
+var url = new URL("https://raw.githubusercontent.com/blahblahbloopster/stupiderercode/master/src/main/resources/madlibs.txt");
+var stream = url.openStream();
 var inputReader = new InputStreamReader(stream);
 var reader = new BufferedReader(inputReader);
 
