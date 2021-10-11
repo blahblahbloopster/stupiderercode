@@ -1,6 +1,6 @@
-package handwrittentree
+package com.github.blahblahbloopster
 
-import handwrittentree.StupidererCodeInterpreter.*
+import com.github.blahblahbloopster.StupidererCodeInterpreter.*
 
 class StupidererCodeCompiler {
 

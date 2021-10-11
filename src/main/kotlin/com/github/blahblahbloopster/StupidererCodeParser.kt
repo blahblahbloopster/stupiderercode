@@ -1,8 +1,9 @@
-package handwrittentree
+package com.github.blahblahbloopster
 
-import handwrittentree.ConstantNode.Type.*
-import handwrittentree.StupidererCodeInterpreter.Union
+import com.github.blahblahbloopster.ConstantNode.Type.*
+import com.github.blahblahbloopster.StupidererCodeInterpreter.Union
 import java.io.File
+import kotlin.system.exitProcess
 
 class StupidererCodeParser {
     private val keywords = listOf(
@@ -364,7 +365,11 @@ class StupidererCodeParser {
 }
 
 fun main() {
-    val node = StupidererCodeParser().parse(File("madlibs.stpdrr").readText())
+    val parser = StupidererCodeParser()
+    val node = parser.parse(parser::class.java.getResourceAsStream("/madlibs.stpdrr")!!.readAllBytes().decodeToString())
+
+//    println(ClassLoader.getSystemClassLoader().getResourceAsStream("madlibs.txt"))
+//    exitProcess(0)
 
     node.print()
     println("========Compiled:========")

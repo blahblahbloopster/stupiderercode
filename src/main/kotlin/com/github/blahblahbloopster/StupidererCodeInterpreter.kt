@@ -1,4 +1,4 @@
-package handwrittentree
+package com.github.blahblahbloopster
 
 import java.lang.reflect.Method
 import java.util.HashSet
@@ -106,7 +106,8 @@ class StupidererCodeInterpreter(private val instructions: List<Instruction>) {
         }
     }
 
-    data class InvokeOp(val pointer: Union<StackAddr, String>, val name: String, val args: List<StackAddr>) : Instruction {
+    data class InvokeOp(val pointer: Union<StackAddr, String>, val name: String, val args: List<StackAddr>) :
+        Instruction {
         override fun execute(interpreter: StupidererCodeInterpreter) {
             val resolvedArgs = args.map { interpreter.stack[it] }
 

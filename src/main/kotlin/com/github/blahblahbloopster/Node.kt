@@ -1,6 +1,6 @@
-package handwrittentree
+package com.github.blahblahbloopster
 
-import handwrittentree.StupidererCodeInterpreter.Union
+import com.github.blahblahbloopster.StupidererCodeInterpreter.Union
 
 sealed interface Node {
     val children: List<Node>
@@ -52,7 +52,8 @@ data class AttributeGetNode(val obj: Union<ExpressionNode, String>, val attrName
     }
 }
 
-class MethodInvokeNode(val obj: Union<ExpressionNode, String>, val methodName: String, val args: List<ExpressionNode>) : ExpressionNode {
+class MethodInvokeNode(val obj: Union<ExpressionNode, String>, val methodName: String, val args: List<ExpressionNode>) :
+    ExpressionNode {
     override val children: List<ExpressionNode> = obj.ifA { listOf(it) + args } el { args }
 
     override fun print(indention: Int) {
@@ -106,7 +107,9 @@ class WhileLoopNode(val expression: ExpressionNode, val block: StatementListNode
 }
 
 fun main() {
-    val tree = MethodInvokeNode(Union.a(AttributeGetNode(Union.b("java.lang.System"), "out")), "println", listOf(ConstantNode(ConstantNode.Type.STRING, "hello, world!")))
+    val tree = MethodInvokeNode(Union.a(AttributeGetNode(Union.b("java.lang.System"), "out")), "println", listOf(
+        ConstantNode(ConstantNode.Type.STRING, "hello, world!")
+    ))
 
     val compiler = StupidererCodeCompiler()
 
